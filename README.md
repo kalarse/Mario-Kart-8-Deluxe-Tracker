@@ -1,6 +1,7 @@
 # Mario-Kart-8-Deluxe-Tracker
 Just tried to create a simple web app tracker to track tracks (duh) to know which tracks were already picked in a competitive format, maybe this can be updated to Mario Kart World at some point
 
+The link: https://kalarse.github.io/Mario-Kart-8-Deluxe-Tracker/index.html
 
 # Goal
 As stated above, this is just to track tracks (duh) played in a competitive Mario Kart 8 Deluxe (MK8D) to just not pick an already picked track. Of course this has limitations with certain rulesets, but since I barely play them, that's a problem for a future me if I wanted to update the code, or someone else if they wanted to modify or update this spaghetti code, be my guest hahaha
