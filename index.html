@@ -5,51 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MK8D Track Tracker</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            font-size: 18px;
-            margin: 0; 
-            padding: 0;
-        }
-        .container { 
-            display: flex; 
-            flex-wrap: wrap;
-            gap: 20px; 
-            padding: 20px;
-            max-height: calc(100vh - 120px);
-            overflow: hidden;
-        }
-        .track-list, .selected-tracks { 
-            width: 100%; 
-            max-width: 500px;
-            overflow-y: auto; 
-            flex: 1;
-        }
-        .track-list ul li, .selected-tracks ol li {
-            margin-bottom: 12px;
-        }
-        .checkbox-label input[type="checkbox"] {
-            transform: scale(1.5);
-            margin-right: 10px;
-        }
-        .header-controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            padding: 10px 20px;
-            position: sticky;
-            top: 0;
-            background: white;
-            z-index: 10;
-        }
-        h1 {
-            padding: 20px 20px 0;
-        }
+        body { font-family: Arial, sans-serif; font-size: 18px; }
+        .container { display: flex; gap: 20px; }
+        .track-list, .selected-tracks { width: 50%; max-height: 400px; overflow-y: auto; }
+        .hidden { display: none; }
+        input[type="checkbox"] { transform: scale(1.5); margin-right: 10px; }
+        .header { display: flex; justify-content: space-between; align-items: center; }
+        .search-container { position: sticky; top: 0; background: white; padding: 10px; z-index: 100; }
     </style>
 </head>
 <body>
     <h1>Mario Kart 8 Deluxe Track Tracker</h1>
-    <div class="header-controls">
+    <div class="search-container">
         <input type="text" id="search" placeholder="Search tracks..." oninput="filterTracks()">
         <button onclick="clearSearch()">Clear</button>
         <button onclick="clearAll()">Clear All</button>
@@ -163,7 +130,7 @@
 "3DS Rosalina's Ice World (bRIW)",
 "SNES Bowser Castle 3 (bBC3)",
 "Wii Rainbow Road (bRRw)"
-        ];
+		];
         
         const trackList = document.getElementById("trackList");
         const selectedTracks = document.getElementById("selectedTracks");
@@ -174,17 +141,12 @@
             trackList.innerHTML = "";
             tracks.forEach(track => {
                 const li = document.createElement("li");
-                const label = document.createElement("label");
-                label.className = "checkbox-label";
-
                 const checkbox = document.createElement("input");
                 checkbox.type = "checkbox";
                 checkbox.dataset.track = track;
                 checkbox.onchange = () => updateSelectedTracks(track, checkbox.checked);
-
-                label.appendChild(checkbox);
-                label.appendChild(document.createTextNode(track));
-                li.appendChild(label);
+                li.appendChild(checkbox);
+                li.appendChild(document.createTextNode(track));
                 trackList.appendChild(li);
             });
         }
